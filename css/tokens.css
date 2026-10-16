@@ -1,0 +1,17 @@
+:root {
+  color-scheme: dark;
+  --bg: #090d14;
+  --surface: #101620;
+  --surface-raised: #171e29;
+  --line: #26303c;
+  --line-soft: #1b2430;
+  --text: #f1f4f6;
+  --muted: #a2adbb;
+  --dim: #788695;
+  --accent: #91f5d4;
+  --accent-bright: #bbffe9;
+  --danger: #ffaaa5;
+  --radius: 12px;
+  --font: 'Segoe UI', Inter, system-ui, -apple-system, sans-serif;
+  --mono: 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+}
