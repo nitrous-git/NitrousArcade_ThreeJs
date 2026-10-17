@@ -4,22 +4,50 @@ void main() { vPosition = position.xy; gl_Position = projectionMatrix * modelVie
 `;
 export const arenaFragment = /* glsl */`
 precision highp float;
+
 varying vec2 vPosition;
+
 uniform float uTime;
 uniform float uEnergy;
+
 void main() {
-  vec2 p = vPosition;
-  vec2 grid = abs(fract(p - .5) - .5) / max(fwidth(p), vec2(.001));
-  float line = 1. - min(min(grid.x, grid.y), 1.);
-  float vignette = exp(-length(p * vec2(.075, .07)) * 1.6);
-  float sweep = pow(.5 + .5 * sin(p.y * .6 - uTime * .35), 12.);
-  vec3 base = mix(vec3(.012, .021, .032), vec3(.024, .052, .063), vignette);
-  base += line * vec3(.017, .038, .043) * (.5 + vignette);
-  base += sweep * vignette * vec3(.004, .013, .012);
-  base += uEnergy * .025 * vec3(.2, .9, .7) * vignette;
-  gl_FragColor = vec4(base, 1.);
-  #include <tonemapping_fragment>
-  #include <colorspace_fragment>
+    vec2 p = vPosition;
+
+    // Stable, anti-aliased procedural grid.
+    vec2 distanceToGrid = abs(fract(p - 0.5) - 0.5);
+    vec2 aa = max(fwidth(p), vec2(0.001));
+
+    float gridX = 1.0 - smoothstep(
+        0.012, 0.012 + aa.x * 1.5, distanceToGrid.x
+    );
+
+    float gridY = 1.0 - smoothstep(
+        0.012, 0.012 + aa.y * 1.5, distanceToGrid.y
+    );
+
+    float line = max(gridX, gridY);
+
+    // Static ambient vignette.
+    float vignette = exp(
+        -length(p * vec2(0.075, 0.07)) * 1.6
+    );
+
+    // Dark teal arena palette.
+    vec3 base = mix(
+        vec3(0.012, 0.021, 0.032),
+        vec3(0.024, 0.052, 0.063),
+        vignette
+    );
+
+    // Stable grid illumination.
+    base += line
+        * vec3(0.017, 0.038, 0.043)
+        * (0.5 + vignette);
+
+    gl_FragColor = vec4(base, 1.0);
+
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
 }
 `;
 export const particleVertex = /* glsl */`
