@@ -116,3 +116,12 @@ test('repeated completed sessions release every renderer and subscription', asyn
   assert.equal(h.counters.inputDisposed, 12);
   assert.equal(h.settings.listeners.size, 0);
 });
+
+test('optional finish details support victory without breaking score-only games', async () => {
+  const h = harness(), f = fixture(); await h.host.launch(f.entry);
+  f.context().finish(200, { victory: true, summary: '8/8 stages cleared' });
+  const result = h.states.at(-1); assert.equal(result.state, 'finished');
+  assert.equal(result.detail.victory, true); assert.equal(result.detail.summary, '8/8 stages cleared');
+  h.host.restart(); f.context().finish(10); assert.equal(h.states.at(-1).detail.victory, false);
+  assert.equal(h.host.scores.best('test'), 200); h.host.leave();
+});

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/arcade.css">
   <link rel="stylesheet" href="./css/player.css">
+  <link rel="stylesheet" href="./css/brick-breaker.css">
   <script type="importmap">
     { "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
@@ -39,13 +40,13 @@
           <p class="eyebrow"><span class="status-dot"></span> THE ARCADE, REIMAGINED</p>
           <h1 id="hero-title">Small games.<br><span>Big energy.</span></h1>
           <p class="hero-description">Familiar rules. A different kind of glow.<br>A growing collection built for one more round.</p>
-          <div class="hero-actions"><button class="primary-button" id="launch-lab">Enter the playground <span aria-hidden="true">↗</span></button><a class="text-link" href="#collection">Explore the collection <span aria-hidden="true">↓</span></a></div>
-          <p class="hero-note"><span class="tiny-pill">FIRST LOOK</span> Try Signal Lab while the collection takes shape.</p>
+          <div class="hero-actions"><button class="primary-button" id="launch-bricks">Play Brick Breaker <span aria-hidden="true">↗</span></button><a class="text-link" href="#collection">Explore the collection <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-note"><span class="tiny-pill">GAME 01 / LIVE</span> Eight stages. Seven power-ups. Beautiful destruction.</p>
         </div>
         <div class="hero-visual">
-          <div class="visual-topline"><span>01 / SIGNAL LAB</span><span class="live-label"><span class="status-dot"></span> INTERACTIVE</span></div>
-          <img class="signal-art" src="./assets/art/signal.svg" alt="A luminous mint crystal suspended inside orbital rings above a dark grid" width="700" height="530">
-          <div class="visual-bottomline"><span>LIGHT. MOTION. PLAY.</span><span aria-hidden="true">+ &nbsp; + &nbsp; +</span></div>
+          <div class="visual-topline"><span>01 / BRICK BREAKER</span><span class="live-label"><span class="status-dot"></span> PLAY NOW</span></div>
+          <img class="signal-art" src="./assets/art/brick-breaker-hero.svg" alt="Extruded mint and amber bricks above a luminous ball trail and paddle" width="700" height="530">
+          <div class="visual-bottomline"><span>SHATTER THE GRID.</span><span aria-hidden="true">+ &nbsp; + &nbsp; +</span></div>
         </div>
       </section>
 
@@ -60,7 +61,7 @@
         <div id="game-grid" class="game-grid"></div>
       </section>
       <section class="lab-strip" aria-label="Signal Lab playground"><div class="lab-symbol" aria-hidden="true">◇</div><div><p class="eyebrow">READY TO EXPLORE</p><h2>A little room to experiment.</h2><p>Move through the grid. Send a pulse. Find your settings.</p></div><button id="launch-lab-bottom" class="secondary-button">Open Signal Lab <span aria-hidden="true">↗</span></button></section>
-      <footer class="site-footer"><span>NITROUS / ARCADE</span><p>Made for the joy of playing.</p><span class="version">FOUNDATION · V0.1.0</span></footer>
+      <footer class="site-footer"><span>NITROUS / ARCADE</span><p>Made for the joy of playing.</p><span class="version">BRICK BREAKER · V1.0.0</span></footer>
     </div>
 
     <section id="player" class="player" aria-label="Arcade player" hidden>
@@ -93,10 +94,10 @@
 
   <dialog id="details-dialog" aria-labelledby="details-title">
     <div class="dialog-heading"><p class="eyebrow" id="details-kicker">ON THE HORIZON</p><button class="close-button" data-close aria-label="Close game details">×</button></div>
-    <div id="details-art" class="details-art" aria-hidden="true"></div><h2 id="details-title"></h2><p id="details-description"></p><p class="details-note">This game is planned. Signal Lab is available now to explore the arcade controls and visual settings.</p><button id="details-lab" class="primary-button">Explore Signal Lab ↗</button>
+    <div id="details-art" class="details-art" aria-hidden="true"></div><h2 id="details-title"></h2><p id="details-description"></p><p class="details-note">This game is on the horizon. Brick Breaker is ready now: eight stages, explosive chains, and seven power-ups.</p><button id="details-lab" class="primary-button">Play Brick Breaker ↗</button>
   </dialog>
 
-  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-heading"><p class="eyebrow">THE IDEA</p><button class="close-button" data-close aria-label="Close about">×</button></div><h2 id="about-title">One more round.</h2><p>Nitrous Arcade is a growing collection of small browser games with classic mechanics and a modern visual identity.</p><p>We’re starting with the playground and building the collection one game at a time. Each game gets room for its own personality, with a familiar place to come back to.</p><p class="settings-note">A Nitrous project · Foundation v0.1.0</p></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-heading"><p class="eyebrow">THE IDEA</p><button class="close-button" data-close aria-label="Close about">×</button></div><h2 id="about-title">One more round.</h2><p>Nitrous Arcade is a growing collection of small browser games with classic mechanics and a modern visual identity.</p><p>Brick Breaker leads the collection with eight sculpted patterns, explosive chains, and power-ups built to combine. Signal Lab remains a little room to experiment.</p><p class="settings-note">A Nitrous project · Brick Breaker v1.0.0</p></dialog>
   <div id="toast" class="toast" role="status" hidden></div>
   <p id="boot-error" class="boot-error" hidden>Something prevented the arcade from starting. Open this folder through a local HTTP server, then reload.</p>
   <noscript><p class="boot-error">Enable JavaScript to use Nitrous Arcade.</p></noscript>

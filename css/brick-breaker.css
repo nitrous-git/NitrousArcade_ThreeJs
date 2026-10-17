@@ -1,0 +1,67 @@
+.stage { position: relative; }
+.bb-hud { position: absolute; inset: 0; color: #c8d8df; pointer-events: none; font-family: var(--font); overflow: hidden; }
+.bb-top { position: absolute; top: 19px; left: 25px; right: 25px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font: 10px var(--mono); letter-spacing: 1.2px; }
+.bb-run-label { display: flex; align-items: center; gap: 13px; color: #7d929f; }
+.bb-run-label i { width: 20px; height: 1px; background: #415b64; }
+.bb-run-label b { color: #b6e6d6; font-weight: 400; }
+.bb-stats { display: flex; align-items: center; gap: 25px; }
+.bb-stats>span { color: #738b99; display: flex; align-items: center; gap: 10px; }
+.bb-stats b { color: #d1e7e9; font-weight: 400; font-size: 12px; }
+.bb-stats .bb-life-label b { color: #8ae9c9; font-size: 13px; white-space: pre; }
+.bb-side { display: none; position: absolute; top: 15%; bottom: 10%; width: clamp(170px, 16%, 250px); }
+.bb-wide .bb-side { display: block; }
+.bb-left { left: 3.4%; }
+.bb-right { right: 3.2%; top: 19%; }
+.bb-wordmark { font-size: 11px; letter-spacing: 2px; font-weight: 650; color: #b7c9cc; }
+.bb-wordmark>span { display: block; color: #627c87; font: 8px var(--mono); letter-spacing: 2px; margin-top: 7px; }
+.bb-stage-number { font-size: clamp(55px, 6vw, 92px); font-weight: 250; letter-spacing: -5px; color: #c0e4db; line-height: 1; margin: 26px 0 12px; }
+.bb-kicker { font: 8px var(--mono); letter-spacing: 2px; color: #6cae9b; margin-bottom: 10px; }
+.bb-side h2 { font-size: clamp(19px, 1.7vw, 25px); font-weight: 500; letter-spacing: -.7px; line-height: 1.2; }
+.bb-stage-description { color: #718895; font-size: 11px; line-height: 1.8; margin-top: 12px; max-width: 180px; }
+.bb-route { border-top: 1px solid #243640; margin-top: 24px; padding-top: 16px; display: grid; gap: 10px; }
+.bb-route>div { display: flex; gap: 10px; align-items: center; font: 9px var(--mono); color: #526874; }
+.bb-route span { font-size: 8px; color: #435a65; }
+.bb-route i { width: 4px; height: 4px; border: 1px solid #3e545f; border-radius: 50%; }
+.bb-route b { font-weight: 400; }
+.bb-route .current { color: #abeed6; }
+.bb-route .current i, .bb-route .complete i { background: #79d2b4; border-color: #79d2b4; }
+.bb-route .complete { color: #7b9b99; }
+.bb-right h3 { font-size: 21px; font-weight: 400; letter-spacing: -.5px; margin-bottom: 22px; }
+.bb-right h3>span { color: #91f5d4; }
+.bb-guide { display: grid; gap: 15px; }
+.bb-guide>div { display: flex; align-items: center; gap: 12px; }
+.bb-guide>div>span { flex: 0 0 29px; height: 25px; display: grid; place-items: center; font: 11px var(--mono); border: 1px solid color-mix(in srgb, var(--power) 40%, transparent); border-radius: 5px; color: var(--power); background: color-mix(in srgb, var(--power) 5%, transparent); }
+.bb-guide b { font-size: 10px; font-weight: 500; color: #b6c8cd; display: block; }
+.bb-guide small { display: block; font-size: 9px; line-height: 1.5; color: #627b88; margin-top: 3px; }
+.bb-legend { margin-top: 25px; padding-top: 16px; border-top: 1px solid #243640; color: #c6ad91; font-size: 10px; line-height: 1.9; }
+.bb-legend i { display: inline-block; width: 5px; height: 5px; border: 1px solid #ffad65; transform: rotate(45deg); margin-right: 6px; }
+.bb-legend span { color: #627b88; font-size: 9px; }
+.bb-message { position: absolute; top: 57%; left: 50%; width: min(80%, 420px); transform: translate(-50%, -50%); text-align: center; padding: 20px 12px; background: radial-gradient(ellipse, #0b1727d9, transparent 72%); }
+.bb-message p { color: #70bda5; font: 9px var(--mono); letter-spacing: 3px; }
+.bb-message h3 { font-weight: 450; font-size: clamp(23px, 3vw, 37px); letter-spacing: -1px; margin: 10px 0; color: #d3e8e6; }
+.bb-message>span { display: block; color: #829ba7; font: 10px/1.8 var(--mono); }
+.bb-bottom { position: absolute; bottom: 14px; left: 20px; right: 20px; display: grid; justify-items: center; gap: 10px; }
+.bb-bottom>p { color: #607e8d; font: 8px/1.5 var(--mono); letter-spacing: 1px; text-align: center; }
+.bb-effects { display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; }
+.bb-effect { overflow: hidden; position: relative; display: flex; gap: 8px; align-items: center; padding: 7px 9px; border: 1px solid #34515c; background: #0b1925e8; border-radius: 4px; font: 9px var(--mono); }
+.bb-effect>b { color: var(--power); font-weight: 500; }
+.bb-effect>span { color: #9ab5bf; }
+.bb-effect>strong { color: var(--power); font-weight: 400; }
+.bb-effect>i { position: absolute; left: 0; bottom: 0; width: var(--remaining); height: 2px; background: var(--power); opacity: .7; }
+.bb-combo { position: absolute; left: 50%; top: 43%; transform: translateX(-50%); display: flex; align-items: baseline; gap: 8px; opacity: .8; }
+.bb-combo b { font: 24px var(--mono); color: #c0f4e2; }
+.bb-combo span { font: 8px var(--mono); letter-spacing: 2px; color: #6dac9a; }
+.bb-toast { position: absolute; top: 49px; left: 50%; transform: translateX(-50%); text-align: center; font: 9px var(--mono); letter-spacing: 2px; white-space: nowrap; background: #0b1725bb; border-radius: 4px; padding: 8px 14px; }
+.bb-small .bb-top { top: 13px; left: 12px; right: 12px; font-size: 8px; letter-spacing: .3px; align-items: flex-start; }
+.bb-small .bb-run-label { gap: 6px; flex-wrap: wrap; max-width: 90px; }
+.bb-small .bb-run-label i { display: none; }
+.bb-small .bb-stats { gap: 13px; }
+.bb-small .bb-stats>span { flex-direction: column; gap: 5px; font-size: 7px; }
+.bb-small .bb-stats b { font-size: 11px; }
+.bb-small .bb-message { top: 55%; }
+.bb-small .bb-effect>span { display: none; }
+.bb-small .bb-bottom { left: 8px; right: 8px; bottom: 10px; }
+.bb-small .bb-bottom>p { font-size: 7px; letter-spacing: 0; }
+.bb-small .bb-toast { top: 52px; font-size: 8px; letter-spacing: 1px; }
+@media (max-height: 750px) { .bb-route { gap: 7px; margin-top: 15px; padding-top: 12px; } .bb-stage-number { margin-top: 15px; font-size: 64px; } .bb-guide { gap: 10px; } .bb-legend { margin-top: 16px; } }
+@media (max-height: 580px) { .bb-route, .bb-stage-description, .bb-legend { display: none; } .bb-guide { gap: 5px; } .bb-guide small { display: none; } .bb-right h3 { margin-bottom: 12px; } .bb-top { top: 10px; } .bb-bottom { bottom: 7px; } }

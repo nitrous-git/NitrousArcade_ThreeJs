@@ -82,3 +82,7 @@ One `nitrous-arcade:v1` document contains version, settings, and scores. Setting
 Real game rules, asset/audio loading pipelines, online leaderboards, controller support, advanced touch overlays, achievements, service workers, and elaborate scene transitions. Add shared abstractions only when a real game needs them.
 
 References: [Three.js installation](https://threejs.org/manual/pages/installation.html), [EffectComposer](https://threejs.org/docs/pages/EffectComposer.html), [UnrealBloomPass](https://threejs.org/docs/pages/UnrealBloomPass.html).
+
+## Brick Breaker integration
+
+The implemented game in `js/games/brick-breaker/` uses a pure model, exact circle/polygon sweeps, stage generators, pooled visual effects, and a scoped DOM HUD. It uses the existing host and loop. `ctx.finish(score, result)` optionally accepts `{ victory, summary }`; score-only games remain compatible. `docs/BRICK_BREAKER.md` describes the model and resource ownership.

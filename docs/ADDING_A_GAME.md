@@ -1,6 +1,6 @@
-# Add the first game
+# Add another game
 
-1. Copy `js/games/_template` to `js/games/brick-breaker` (or the chosen game ID).
+1. Copy `js/games/_template` to a new directory under `js/games/`. Brick Breaker is already implemented and is a complete reference.
 2. Keep `index.js` as the public entry. As needed, add `model.js` for rules, `config.js` for tuning, `view.js` for visuals, and a local `shaders/` folder. Do not split trivial code just to fill folders.
 3. Implement the lifecycle methods, preserving the host's loop and input ownership.
 4. In `js/games/registry.js`, change the corresponding entry to:
@@ -21,7 +21,7 @@
 
 The existing card will launch it instead of opening planned-game details. Use stable IDs; they are also the local high-score keys.
 
-5. Use `ctx.setHud({score})` when the score changes and `ctx.finish(score)` when the round ends. The shell supplies replay and exit actions.
+5. Use `ctx.setHud({score})` when the score changes and `ctx.finish(score)` when the round ends. Optional metadata is supported: `ctx.finish(score, { victory: true, summary: "Run complete" })`. The shell supplies replay and exit actions.
 6. Track owned GPU resources with `ctx.scope.track()`. If loading files, resolve URLs relative to the module:
 
 ```js
@@ -38,7 +38,7 @@ ctx.signal.throwIfAborted();
 
 Before calling the game complete, validate controls, fair collisions, score progression, pause/restart, game over, resize, audio, and repeated exits. Visual effects must preserve readability. Add game-specific touch controls only after defining the actual interaction.
 
-## Suggested first-game phases
+## Suggested implementation phases
 
 1. Finalize the rules and controls.
 2. Implement and validate core gameplay using simple shapes.

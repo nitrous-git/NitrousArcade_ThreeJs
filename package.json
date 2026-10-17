@@ -1,9 +1,9 @@
 {
   "name": "nitrous-arcade",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A modular Three.js arcade. Phase 1 foundation.",
+  "description": "A modular Three.js arcade. Game 01: Brick Breaker.",
   "scripts": {
     "start": "node tools/serve.mjs",
     "check": "node tools/check.mjs",

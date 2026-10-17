@@ -10,8 +10,8 @@ const storage = new Storage();
 const settings = new Settings(storage);
 const scores = new ScoreStore(storage);
 const audio = new AudioService(settings);
-let lastLauncher = $('launch-lab');
-let lastEntry = findGame('signal-lab');
+let lastLauncher = $('launch-bricks');
+let lastEntry = findGame('brick-breaker');
 let currentScore = 0;
 let toastTimer;
 let hubScroll = 0;
@@ -64,12 +64,12 @@ const host = new GameHost({
     }
     if (state === 'loading') showOverlay({ kicker: 'GETTING READY', title: 'Tuning in.', description: 'Loading the scene and its rendering modules.' });
     if (state === 'paused') showOverlay({ kicker: 'TAKE A BREATH', title: 'Paused.', description: 'Your place is right here. Resume when you’re ready.', label: 'Resume ↗', action: () => host.resume() });
-    if (state === 'finished') showOverlay({ kicker: detail.record ? 'NEW LOCAL BEST' : 'SESSION COMPLETE', title: detail.entry.id === 'signal-lab' ? 'Signal received.' : 'Round complete.', description: `${detail.entry.scoreLabel || 'Score'}: ${detail.score}. Personal best: ${detail.best}.`, label: 'Try again ↗', action: () => host.restart() });
+    if (state === 'finished') showOverlay({ kicker: detail.record ? 'NEW LOCAL BEST' : detail.victory ? 'ALL EIGHT PATTERNS CLEARED' : 'SESSION COMPLETE', title: detail.entry.id === 'signal-lab' ? 'Signal received.' : detail.victory ? 'Grid shattered.' : 'One more round?', description: `${detail.entry.scoreLabel || 'Score'}: ${detail.score}. Personal best: ${detail.best}.${detail.summary ? ` ${detail.summary}.` : ''}`, label: 'Play again ↗', action: () => host.restart() });
     if (state === 'menu') {
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       window.scrollTo({ top: hubScroll, behavior: 'instant' });
       if (lastLauncher?.isConnected && !lastLauncher.closest('[hidden]') && !lastLauncher.closest('dialog')) lastLauncher.focus({ preventScroll: true });
-      else $('launch-lab').focus({ preventScroll: true });
+      else $('launch-bricks').focus({ preventScroll: true });
     }
   },
   onError(error) {
@@ -150,8 +150,9 @@ for (const button of document.querySelectorAll('[data-filter]')) button.addEvent
   }
   renderCollection(button.dataset.filter);
 });
-for (const id of ['launch-lab', 'launch-lab-bottom']) $(id).addEventListener('click', () => launch(findGame('signal-lab'), $(id)));
-$('details-lab').addEventListener('click', () => { $('details-dialog').close(); launch(findGame('signal-lab'), $('launch-lab')); });
+$('launch-bricks').addEventListener('click', () => launch(findGame('brick-breaker'), $('launch-bricks')));
+$('launch-lab-bottom').addEventListener('click', () => launch(findGame('signal-lab'), $('launch-lab-bottom')));
+$('details-lab').addEventListener('click', () => { $('details-dialog').close(); launch(findGame('brick-breaker'), $('launch-bricks')); });
 $('settings-button').addEventListener('click', () => { applySettings(settings.snapshot); openDialog('settings-dialog'); });
 $('player-settings').addEventListener('click', () => { applySettings(settings.snapshot); openDialog('settings-dialog'); });
 $('about-button').addEventListener('click', () => openDialog('about-dialog'));

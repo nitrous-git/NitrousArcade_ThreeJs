@@ -41,7 +41,7 @@ export class GameHost {
         settings: this.settings, scope, signal: controller.signal,
         motionReduced: () => this.settings.snapshot.reducedMotion || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches,
         setHud: data => { if (current()) this.onHud(data); },
-        finish: score => { if (current()) this.finish(score); },
+        finish: (score, result) => { if (current()) this.finish(score, result); },
       };
       await session.game.init(context);
       if (!current()) { this.disposeSession(session); return false; }
@@ -108,7 +108,7 @@ export class GameHost {
     this.session.loop.stop(); this.audio.stopAll();
     try { this.startSession(); } catch (error) { this.fail(error); }
   }
-  finish(score) {
+  finish(score, result = {}) {
     if (this.state !== 'playing') return;
     const s = this.session;
     s.loop.stop(); s.input.setEnabled(false); this.audio.stopAll();
@@ -116,7 +116,8 @@ export class GameHost {
       const previous = this.scores.best(s.entry.id);
       const best = this.scores.submit(s.entry.id, score);
       this.onHud({ score, best });
-      this.setState('finished', { entry: s.entry, score, best, record: score > previous });
+      this.setState('finished', { entry: s.entry, score, best, record: score > previous,
+        victory: result.victory === true, summary: typeof result.summary === 'string' ? result.summary : '' });
     } catch (error) { this.fail(error); }
   }
   resize() {

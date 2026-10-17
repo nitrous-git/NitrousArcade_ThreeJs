@@ -1,4 +1,4 @@
-export const APP = Object.freeze({ name: 'Nitrous Arcade', version: '0.1.0' });
+export const APP = Object.freeze({ name: 'Nitrous Arcade', version: '1.0.0' });
 export const STORAGE_KEY = 'nitrous-arcade:v1';
 export const DEFAULT_SETTINGS = Object.freeze({
   volume: 0.35,
