@@ -63,9 +63,9 @@ export class Graphics {
 
             this.bloomPass = new UnrealBloomPass(
                 new THREE.Vector2(1, 1),
-                0.7,
                 0.45,
-                0.8
+                0.45,
+                1.0
             );
             this.outputPass = new OutputPass();
 

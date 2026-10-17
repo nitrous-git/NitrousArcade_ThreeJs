@@ -40,7 +40,7 @@ export class BrickBreakerView {
         rim.position.set(9, -5, 3);
         this.scene.add(rim);
 
-        this.ballLight = new THREE.PointLight('#6dffc9', 13, 7, 2);
+        this.ballLight = new THREE.PointLight('#6dffc9', 3.0, 5, 2);
         this.ballLight.position.z = 2;
         this.scene.add(this.ballLight);
 
